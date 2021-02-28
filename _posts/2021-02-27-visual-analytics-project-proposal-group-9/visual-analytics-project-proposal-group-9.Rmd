@@ -33,7 +33,7 @@ The objective of this project is to create an app using R-Shiny that will enable
 
 - Optimize the utilization rate of their entire bike fleet
 
-- Track and determine the right time to perform servicing and maintenance on the bike fleet.
+- Track and determine the right time to perform servicing and maintenance on the bike fleet
 
 # Data Source & Description
 
@@ -113,6 +113,11 @@ Interactive Features:
 | Plotly |  Creating interactive web-based graphs |
 | Lattice | To display multivariate relationships and support creation of trellis graphs. |
 | Patchwork | To combine separate ggplots into the same graphic. |
+
+# Github Repository
+
+The project has been initiated on Github. Here is the link:
+https://github.com/vikramchamp/VA-Project-Blog
 
 # References
 
