@@ -48,7 +48,7 @@ The metadata and list of GPS co-ordinates and number of docks for each bike stat
 
 # Data Preparation
 
-1. Split “starttime” and “stoptime” into data and time format.
+1. Split “starttime” and “stoptime” into date and time format.
 2. Derive age by using 2020 minus “birth year” and create age groups.
 3. Merge the data file “202101-bluebikes-tripdata" and “current_bluebikes_stations” which contains the number of docks of each station.
 4. Calculate the inbound of a station minus the outbound of a station during a time period. If the result is positive, the station has an excess. If it is negative, the station is in deficit.
