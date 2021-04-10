@@ -1,0 +1,283 @@
+---
+title: "DataVizAssignment"
+description: |
+  A short description of the post.
+author:
+  - name: Ziqi Wang
+    url: https://example.com/norajones
+date: 04-10-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+**ISSS608 Visual Analytics and Applications - DataViz Assignment**
+
+Ziqi Wang ([ziqiwang.2020@mitb.smu.edu.sg](mailto:ziqiwang.2020@mitb.smu.edu.sg))
+
+DataViz Project Proposal Link:
+https://priceless-bassi-ea03a8.netlify.app/posts/2021-02-27-visual-analytics-project-proposal-group-9/
+
+
+## 1.0 Introduction
+This report details the preliminary visualization preparation for a project undertaken for the course ISSS608 - Visual Analytics and Applications offered in SMU MITB. As one of the project deliverables, this assiganment is a sub-module (module 1) from our proposed project - Enabling optimization of Bike Sharing Operations – Bluebikes.
+
+
+## 2.0 Literature Review
+Based on Shayini, S. (2017, March 24). _RPubs - Bike Sharing Data Analysis with R_. RPubs. [https://www.rpubs.com/shayini/bike\_sharing](https://www.rpubs.com/shayini/bike_sharing), the analysis digs into data exploration aspect, we include geospatial data mapping in our project to enrich the data visualization. According to Low, C. T. (2018, September 5). Analysis and Visualization of Blue Bikes Sharing in Boston. DataScience+. [https://datascienceplus.com/blue-bikes-sharing-in-boston/](https://datascienceplus.com/blue-bikes-sharing-in-boston/), the analysis and visualization were performed with mapping using leaflet. Specifically, dock stations are marked in map as well as trips in each dock station are present through heatmap. For dock stations distribution, popups function are used to show the name of the dock station by clicking, to enhance the user experience, we use the htmltool package to enable the label display by hovering house over a marker. As regard to the heatmap, the overall popularity of each dock station can be acquired, however we cannot gain the detailed trip number or station information from it. To narrow this gap, we intend to use dot density to represent the popularity of each dock station, and increase the interactivity by using cluster, on top of that, we add filters to allow us to investigate the usage of different type of users along one day.
+
+
+## 3.0 Data Preparation
+### 3.1 Install Packages
+Packages required
+library(data.table) # for faster loading on large dataset
+library(tidyverse) # load ggplot, dplyr
+library(leaflet) # interactive mapping 
+library(leaflet.extras) # extra mapping for leaflet
+library(lubridate) # formatting date and time
+library(gridExtra) # multiple plot arrange
+library(grid) # multiple plot arrange
+library(psych) # to get describe function
+library(janitor) # to get tabulate variables function
+library(htmltool) # for HTML generation and output
+library(crosstalk) # for filter inputs
+
+```{r}
+packages = c('data.table','tidyverse','leaflet','leaflet.extras','lubridate','gridExtra','grid','psych','janitor', 'htmltools','crosstalk')
+for (p in packages){
+  if(!require(p, character.only = T)){
+  install.packages(p)
+  }
+  library(p,character.only= T )
+}
+```
+
+### 3.2 Importing Data
+
+```{r}
+#load trip data
+trip <- read_csv('data/202001-bluebikes-tripdata.csv')
+#load station data
+station <- read.csv('data/current_bluebikes_stations.csv')
+```
+
+### 3.3 Checking the overview of the dataset
+```{r}
+glimpse(trip)
+```
+
+### 3.4 Data Wrangling
+```{r}
+# Convert second to minutes and round it non decimal points
+trip$minutes <- round(trip$tripduration/60, 0)
+
+# Calculate the age from birth year
+trip$age <- 2020 - trip$'birth year'
+
+# Recode gender variables
+trip$gender <- as.factor(recode(trip$gender, '0' = 'Female', '1' = 'Male', '2' = 'Prefer not to say'))
+
+# Convert the time and date variable to correct format
+trip$starttime <- ymd_hms(trip$starttime)
+trip$stoptime <- ymd_hms(trip$stoptime)
+
+# Separate date and time
+trip <- trip %>%
+  mutate_at(vars(starttime), ymd_hms) %>%
+  mutate_at(vars(starttime), funs('start_date' = date(.)))
+
+trip <- trip %>%
+  mutate_at(vars(stoptime), ymd_hms) %>%
+  mutate_at(vars(stoptime), funs('stop_date' = date(.)))
+
+# Extracting day, weekday and hour
+trip$day <- day(trip$starttime)
+trip$weekday <- wday(trip$starttime, label = TRUE)
+trip$hour <- hour(trip$starttime)
+
+
+# Select relevant variable
+trip_data <- select(trip, 'tripduration', 'start_date', 'stop_date', 'start station name', 'start station latitude', 'start station longitude', 'end station name' , 'end station latitude', 'end station longitude', 'usertype', 'gender', 'minutes', 'age', 'day', 'weekday', 'hour')
+
+# Rename variable
+colnames(trip_data) <- c('tripduration', 'start_date', 'stop_date', 'start_name', 'start_lat', 'start_long', 'end_name' ,'end_lat', 'end_long', 'usertype', 'gender', 'minutes', 'age', 'day', 'weekday', 'hour')
+
+# Convert into factor
+trip_data$weekday <- as.factor(trip_data$weekday)
+
+```
+
+
+### 3.5 Checking the overview of the dataset again
+```{r}
+glimpse(trip_data)
+
+```
+
+
+## 4.0 Visualisation Preparation
+### 4.1 Visualize all the dock stations around Boston
+Before the analysis, we first visualize all the dock stations around Boston, and the dock station name will be displayed while hovering over the mouse.
+
+```{r}
+DockStation <- station %>% 
+  leaflet() %>%
+  setView(lng = -71.0589, lat = 42.3601, zoom = 13) %>% 
+  addTiles() %>%
+  addMarkers(lng = station$Longitude, 
+             lat = station$Latitude, 
+             label = ~htmlEscape(station$Name))
+DockStation
+```
+
+
+
+### 4.2 Heatmap
+The overall popularity of each dock station.
+
+```{r}
+#starting location
+#mapping 
+trip_data %>% 
+  leaflet() %>%
+  setView(lng = -71.0589, lat = 42.3601, zoom = 13) %>% 
+  addTiles() %>%
+  addHeatmap(lng = trip_data$start_long, 
+             lat = trip_data$start_lat, 
+             max = 2, 
+             radius = 15)
+```
+
+
+```{r}
+#ending location
+#mapping 
+trip_data %>% 
+  leaflet() %>%
+  setView(lng = -71.0589, lat = 42.3601, zoom = 13) %>% 
+  addTiles() %>%
+  addHeatmap(lng = trip_data$end_long, 
+             lat = trip_data$end_lat, 
+             max = 2, 
+             radius = 15)
+```
+
+
+### 4.3 Clustered Dot Density Map
+Since there are a great number of stations on the map, to avoid the large overlap of dots, we cluster them for better visualize the popularity of each dock station as well as the distribution of dock stations. On top of that, we use both dot size and dot color to represent the number of trip for each station. Right click the circle to zoom in and acquire the dock station name and number of trip. 
+
+```{r}
+# Make mapping color palette for numerical variables
+popularity<-tabyl(trip_data, start_name)
+cPal<-colorNumeric(palette = "YlOrRd", domain = popularity$n)
+```
+
+
+```{r}
+#starting location
+#mapping
+trip_data %>% 
+  leaflet() %>%
+  setView(lng = -71.0589, lat = 42.3601, zoom = 13) %>% 
+  addTiles() %>%
+  addCircleMarkers(clusterOptions = markerClusterOptions(),
+                   lng = trip_data$start_long, 
+                   lat = trip_data$start_lat,
+                   color = cPal(popularity$n),
+                   stroke = FALSE,
+                   radius = sqrt(popularity$n)/5,
+                   fillOpacity = 1,
+                   popup = paste('Station:',trip_data$start_name, '<br>',
+                           'Number of trips:',popularity$n))
+
+```
+
+
+```{r}
+#ending location
+#mapping
+trip_data %>% 
+  leaflet() %>%
+  setView(lng = -71.0589, lat = 42.3601, zoom = 13) %>% 
+  addTiles() %>%
+  addCircleMarkers(clusterOptions = markerClusterOptions(),
+                   lng = trip_data$end_long, 
+                   lat = trip_data$end_lat,
+                   color = cPal(popularity$n),
+                   stroke = FALSE,
+                   radius = sqrt(popularity$n)/5,
+                   fillOpacity = 1,
+                   popup = paste('Station:',trip_data$end_name, '<br>',
+                           'Number of trips:',popularity$n))
+
+```
+
+
+### 4.4 Dot Density  Map with Filter
+To shrink the data size and select the data according to our analyzing purpose, we add filters to the dot density map, with that we are able to visualize the changes in number of trip for each station through the day as well as difference between two types of user.
+
+```{r}
+#starting location
+#mapping
+shared_trip<-SharedData$new(trip_data)
+bscols(widths=c(3,9),
+  list(
+    filter_checkbox("usertype", "User Type", shared_trip, ~usertype, columns = 1),
+    filter_slider("hour", "Hour of Day", shared_trip, ~hour, step=1)
+  ),
+  leaflet(shared_trip) %>%
+  setView(lng = -71.0589, lat = 42.3601, zoom = 13) %>% 
+  addTiles() %>%
+  addCircleMarkers(lng = trip_data$start_long, 
+                   lat = trip_data$start_lat,
+                   color = cPal(popularity$n),
+                   stroke = FALSE,
+                   radius = sqrt(popularity$n)/5,
+                   fillOpacity = 1,
+                   popup = paste('Station:',trip_data$start_name, '<br>',
+                           'Number of trips:',popularity$n)) %>%
+  addLegend("bottomright", pal = cPal, values = ~popularity$n,
+      title = "Number of Trip",
+      opacity = 1)
+)
+```
+
+
+```{r}
+#ending location
+#mapping
+shared_trip<-SharedData$new(trip_data)
+bscols(widths=c(3,9),
+  list(
+    filter_checkbox("usertype", "User Type", shared_trip, ~usertype, columns = 1),
+    filter_slider("hour", "Hour of Day", shared_trip, ~hour, step=1)
+  ),
+  leaflet(shared_trip) %>%
+  setView(lng = -71.0589, lat = 42.3601, zoom = 13) %>% 
+  addTiles() %>%
+  addCircleMarkers(lng = trip_data$end_long, 
+                   lat = trip_data$end_lat,
+                   color = cPal(popularity$n),
+                   stroke = FALSE,
+                   radius = sqrt(popularity$n)/5,
+                   fillOpacity = 1,
+                   popup = paste('Station:',trip_data$end_name, '<br>',
+                           'Number of trips:',popularity$n)) %>%
+  addLegend("bottomright", pal = cPal, values = ~popularity$n,
+      title = "Number of Trip",
+      opacity = 1)
+)
+```
+
+
+
+## 5.0 Storyboard
+
+![](data/1.png)
+
+
