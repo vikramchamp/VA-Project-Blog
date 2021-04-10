@@ -1,5 +1,5 @@
 ---
-title: "Assignment"
+title: "Assignment Liu Jie"
 description: |
   This is my assignment on bike trips distribution and utilization.
 author:
@@ -42,7 +42,7 @@ for (p in packages){
 ```
 
 
-Import the bluebikes tripdata data 
+Import the bluebikes tripdata data. 
 
 ```{r message = FALSE, warning = FALSE}
 #load trip data
@@ -53,7 +53,7 @@ glimpse(trip)
 ```
 
 
-Prepare the data to be used for the visualization 
+Prepare the data to be used for the visualization. 
 
 ```{r message = FALSE, warning = FALSE}
 #separate date and time

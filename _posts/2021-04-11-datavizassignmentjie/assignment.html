@@ -86,7 +86,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>Assignment</title>
+  <title>Assignment Liu Jie</title>
 
   <meta property="description" itemprop="description" content="This is my assignment on bike trips distribution and utilization."/>
 
@@ -97,26 +97,26 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <meta name="article:author" content="Liu Jie"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Assignment"/>
+  <meta property="og:title" content="Assignment Liu Jie"/>
   <meta property="og:type" content="article"/>
   <meta property="og:description" content="This is my assignment on bike trips distribution and utilization."/>
   <meta property="og:locale" content="en_US"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Assignment"/>
+  <meta property="twitter:title" content="Assignment Liu Jie"/>
   <meta property="twitter:description" content="This is my assignment on bike trips distribution and utilization."/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Assignment"]},{"type":"character","attributes":{},"value":["This is my assignment on bike trips distribution and utilization.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Liu Jie"]}]}]},{"type":"character","attributes":{},"value":["04-10-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Assignment Liu Jie"]},{"type":"character","attributes":{},"value":["This is my assignment on bike trips distribution and utilization.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Liu Jie"]}]}]},{"type":"character","attributes":{},"value":["04-10-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["assignment_files/anchor-4.2.2/anchor.min.js","assignment_files/bowser-1.9.3/bowser.min.js","assignment_files/distill-2.2.21/template.v2.js","assignment_files/figure-html5/unnamed-chunk-5-1.png","assignment_files/figure-html5/unnamed-chunk-6-1.png","assignment_files/header-attrs-2.6/header-attrs.js","assignment_files/jquery-1.11.3/jquery.min.js","assignment_files/webcomponents-2.0.0/webcomponents.js","data/202001-bluebikes-tripdata.csv","data/cleaned_data.csv","data/current_bluebikes_stations.csv","data/duration.csv","data/test_data.csv","Graph.jpg"]}
+  {"type":"character","attributes":{},"value":["assignment_files/anchor-4.2.2/anchor.min.js","assignment_files/bowser-1.9.3/bowser.min.js","assignment_files/distill-2.2.21/template.v2.js","assignment_files/figure-html5/unnamed-chunk-5-1.png","assignment_files/figure-html5/unnamed-chunk-6-1.png","assignment_files/header-attrs-2.6/header-attrs.js","assignment_files/header-attrs-2.7/header-attrs.js","assignment_files/jquery-1.11.3/jquery.min.js","assignment_files/popper-2.6.0/popper.min.js","assignment_files/tippy-6.2.7/tippy-bundle.umd.min.js","assignment_files/tippy-6.2.7/tippy-light-border.css","assignment_files/tippy-6.2.7/tippy.css","assignment_files/tippy-6.2.7/tippy.umd.min.js","assignment_files/webcomponents-2.0.0/webcomponents.js","data/202001-bluebikes-tripdata.csv","data/cleaned_data.csv","data/current_bluebikes_stations.csv","data/duration.csv","data/test_data.csv","Graph.jpg"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -308,11 +308,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     text-decoration: underline;
   }
 
-  d-article details {
-    grid-column: text;
-    margin-bottom: 0.8em;
-  }
-
   @media(min-width: 768px) {
 
   d-article pre,
@@ -467,17 +462,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   div.hanging-indent{
     margin-left: 1em; text-indent: -1em;
-  }
-
-  /* Citation hover box */
-
-  .tippy-box[data-theme~=light-border] {
-    background-color: rgba(250, 250, 250, 0.95);
-  }
-
-  .tippy-content > p {
-    margin-bottom: 0;
-    padding: 2px;
   }
 
 
@@ -1145,7 +1129,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       var layout = $(this).attr('data-layout');
 
       // apply layout to markdown level block elements
-      var elements = $(this).children().not('details, div.sourceCode, pre, script');
+      var elements = $(this).children().not('div.sourceCode, pre, script');
       elements.each(function(i, el) {
         var layout_div = $('<div class="' + layout + '"></div>');
         if (layout_div.hasClass('shaded')) {
@@ -1260,20 +1244,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       // move appendix-bottom entries to the bottom
       $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
       $('.appendix-bottom').remove();
-
-      // hoverable references
-      $('span.citation[data-cites]').each(function() {
-        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
-        window.tippy(this, {
-          allowHTML: true,
-          content: refHtml,
-          maxWidth: 500,
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'light-border',
-          placement: 'bottom-start'
-        });
-      });
 
       // clear polling timer
       clearInterval(tid);
@@ -1434,12 +1404,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="assignment_files/header-attrs-2.7/header-attrs.js"></script>
+  <script src="assignment_files/header-attrs-2.6/header-attrs.js"></script>
   <script src="assignment_files/jquery-1.11.3/jquery.min.js"></script>
-  <script src="assignment_files/popper-2.6.0/popper.min.js"></script>
-  <link href="assignment_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
-  <link href="assignment_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
-  <script src="assignment_files/tippy-6.2.7/tippy.umd.min.js"></script>
   <script src="assignment_files/anchor-4.2.2/anchor.min.js"></script>
   <script src="assignment_files/bowser-1.9.3/bowser.min.js"></script>
   <script src="assignment_files/webcomponents-2.0.0/webcomponents.js"></script>
@@ -1455,7 +1421,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Assignment","description":"This is my assignment on bike trips distribution and utilization.","authors":[{"author":"Liu Jie","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-04-10T00:00:00.000+08:00","citationText":"Jie, 2021"}
+{"title":"Assignment Liu Jie","description":"This is my assignment on bike trips distribution and utilization.","authors":[{"author":"Liu Jie","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-04-10T00:00:00.000+08:00","citationText":"Jie, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1465,7 +1431,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Assignment</h1>
+<h1>Assignment Liu Jie</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
 <p><p>This is my assignment on bike trips distribution and utilization.</p></p>
@@ -1488,7 +1454,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>Install the necessary packages.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>packages</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'data.table'</span>,<span class='st'>'tidyverse'</span>,<span class='st'>'lubridate'</span><span class='op'>)</span>
+<pre><code><span class='va'>packages</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'data.table'</span>,<span class='st'>'tidyverse'</span>,<span class='st'>'lubridate'</span><span class='op'>)</span>
 <span class='kw'>for</span> <span class='op'>(</span><span class='va'>p</span> <span class='kw'>in</span> <span class='va'>packages</span><span class='op'>)</span><span class='op'>{</span>
   <span class='kw'>if</span><span class='op'>(</span><span class='op'>!</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='va'>p</span>, character.only <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span><span class='op'>)</span><span class='op'>{</span>
   <span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='va'>p</span><span class='op'>)</span>
@@ -1498,10 +1464,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </code></pre>
 </div>
 </div>
-<p>Import the bluebikes tripdata data</p>
+<p>Import the bluebikes tripdata data.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>#load trip data</span>
+<pre><code><span class='co'>#load trip data</span>
 <span class='va'>trip</span> <span class='op'>&lt;-</span> <span class='fu'>read_csv</span><span class='op'>(</span><span class='st'>'data/202001-bluebikes-tripdata.csv'</span><span class='op'>)</span>
 
 <span class='co'>#Checking the overview of the dataset</span>
@@ -1510,26 +1476,26 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <pre><code>Rows: 128,598
 Columns: 15
-$ tripduration              &lt;dbl&gt; 478, 363, 284, 193, 428, 695, 1336~
-$ starttime                 &lt;dttm&gt; 2020-01-01 00:04:05, 2020-01-01 0~
-$ stoptime                  &lt;dttm&gt; 2020-01-01 00:12:04, 2020-01-01 0~
-$ `start station id`        &lt;dbl&gt; 366, 219, 219, 396, 60, 372, 36, 3~
-$ `start station name`      &lt;chr&gt; &quot;Broadway T Stop&quot;, &quot;Boston East - ~
-$ `start station latitude`  &lt;dbl&gt; 42.34278, 42.37331, 42.37331, 42.4~
-$ `start station longitude` &lt;dbl&gt; -71.05747, -71.04102, -71.04102, -~
-$ `end station id`          &lt;dbl&gt; 93, 212, 212, 387, 49, 178, 23, 23~
-$ `end station name`        &lt;chr&gt; &quot;JFK/UMass T Stop&quot;, &quot;Maverick Squa~
-$ `end station latitude`    &lt;dbl&gt; 42.32034, 42.36884, 42.36884, 42.4~
-$ `end station longitude`   &lt;dbl&gt; -71.05118, -71.03978, -71.03978, -~
-$ bikeid                    &lt;dbl&gt; 6005, 3168, 3985, 2692, 4978, 5538~
-$ usertype                  &lt;chr&gt; &quot;Customer&quot;, &quot;Subscriber&quot;, &quot;Subscri~
-$ `birth year`              &lt;dbl&gt; 1969, 2000, 2001, 1978, 1987, 1989~
-$ gender                    &lt;dbl&gt; 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0~</code></pre>
+$ tripduration              &lt;dbl&gt; 478, 363, 284, 193, 428, 695, 1...
+$ starttime                 &lt;dttm&gt; 2020-01-01 00:04:05, 2020-01-0...
+$ stoptime                  &lt;dttm&gt; 2020-01-01 00:12:04, 2020-01-0...
+$ `start station id`        &lt;dbl&gt; 366, 219, 219, 396, 60, 372, 36...
+$ `start station name`      &lt;chr&gt; &quot;Broadway T Stop&quot;, &quot;Boston East...
+$ `start station latitude`  &lt;dbl&gt; 42.34278, 42.37331, 42.37331, 4...
+$ `start station longitude` &lt;dbl&gt; -71.05747, -71.04102, -71.04102...
+$ `end station id`          &lt;dbl&gt; 93, 212, 212, 387, 49, 178, 23,...
+$ `end station name`        &lt;chr&gt; &quot;JFK/UMass T Stop&quot;, &quot;Maverick S...
+$ `end station latitude`    &lt;dbl&gt; 42.32034, 42.36884, 42.36884, 4...
+$ `end station longitude`   &lt;dbl&gt; -71.05118, -71.03978, -71.03978...
+$ bikeid                    &lt;dbl&gt; 6005, 3168, 3985, 2692, 4978, 5...
+$ usertype                  &lt;chr&gt; &quot;Customer&quot;, &quot;Subscriber&quot;, &quot;Subs...
+$ `birth year`              &lt;dbl&gt; 1969, 2000, 2001, 1978, 1987, 1...
+$ gender                    &lt;dbl&gt; 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0...</code></pre>
 </div>
-<p>Prepare the data to be used for the visualization</p>
+<p>Prepare the data to be used for the visualization.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>#separate date and time</span>
+<pre><code><span class='co'>#separate date and time</span>
 <span class='va'>trip</span> <span class='op'>&lt;-</span> <span class='va'>trip</span> <span class='op'>%&gt;%</span>
  <span class='fu'>mutate_at</span><span class='op'>(</span><span class='fu'>vars</span><span class='op'>(</span><span class='va'>starttime</span><span class='op'>)</span>, <span class='va'>ymd_hms</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
  <span class='fu'>mutate_at</span><span class='op'>(</span><span class='fu'>vars</span><span class='op'>(</span><span class='va'>starttime</span><span class='op'>)</span>, <span class='fu'>funs</span><span class='op'>(</span><span class='st'>'start_date'</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/date.html'>date</a></span><span class='op'>(</span><span class='va'>.</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
@@ -1553,15 +1519,15 @@ $ gender                    &lt;dbl&gt; 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0~</cod
 </div>
 <pre><code>Rows: 128,598
 Columns: 4
-$ day      &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ~
-$ weekday  &lt;fct&gt; 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, ~
-$ bikeid   &lt;chr&gt; &quot;6005&quot;, &quot;3168&quot;, &quot;3985&quot;, &quot;2692&quot;, &quot;4978&quot;, &quot;5538&quot;, &quot;29~
-$ usertype &lt;chr&gt; &quot;Customer&quot;, &quot;Subscriber&quot;, &quot;Subscriber&quot;, &quot;Subscriber~</code></pre>
+$ day      &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+$ weekday  &lt;fct&gt; 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, ...
+$ bikeid   &lt;chr&gt; &quot;6005&quot;, &quot;3168&quot;, &quot;3985&quot;, &quot;2692&quot;, &quot;4978&quot;, &quot;5538&quot;, ...
+$ usertype &lt;chr&gt; &quot;Customer&quot;, &quot;Subscriber&quot;, &quot;Subscriber&quot;, &quot;Subscri...</code></pre>
 </div>
 <p>Further data preparation for the distribution visualization.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>#compute the number of trips per bike in a weekday </span>
+<pre><code><span class='co'>#compute the number of trips per bike in a weekday </span>
 <span class='va'>distribution</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>trip_data</span><span class='op'>$</span><span class='va'>weekday</span>, <span class='va'>trip_data</span><span class='op'>$</span><span class='va'>bikeid</span><span class='op'>)</span>
 
 <span class='co'>#convert the table to data frame</span>
@@ -1587,16 +1553,16 @@ $ usertype &lt;chr&gt; &quot;Customer&quot;, &quot;Subscriber&quot;, &quot;Subsc
 </div>
 <pre><code>Rows: 18,907
 Columns: 3
-$ week_of_day     &lt;fct&gt; Sun, Mon, Tue, Wed, Thu, Fri, Sat, Sun, Mon,~
-$ bike_id         &lt;fct&gt; 1072, 1072, 1072, 1072, 1072, 1072, 1072, 12~
-$ number_of_trips &lt;int&gt; 0, 1, 4, 1, 0, 0, 0, 6, 5, 5, 6, 2, 4, 3, 1,~</code></pre>
+$ week_of_day     &lt;fct&gt; Sun, Mon, Tue, Wed, Thu, Fri, Sat, Sun, M...
+$ bike_id         &lt;fct&gt; 1072, 1072, 1072, 1072, 1072, 1072, 1072,...
+$ number_of_trips &lt;int&gt; 0, 1, 4, 1, 0, 0, 0, 6, 5, 5, 6, 2, 4, 3,...</code></pre>
 </div>
 <h1 id="testing-and-prototyping-the-proposed-sub-module-step-by-step">4. Testing and prototyping the proposed sub-module (Step by step)</h1>
 <h2 id="distribution-of-the-bike-trips-by-weekday">Distribution of the bike trips by weekday</h2>
 <p>This is to analyze the bike trips distribution based on a five number summary and the outliers. We will be using the ggplot to plot the boxplot by having the week of day as x-axis and number of trips as the y-axis, use the week of day as color to differeciate. In addition, add color and shape to outliers to make it more obvious. Lastly, add a title to the boxplot.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>#save and plot the box plot</span>
+<pre><code><span class='co'>#save and plot the box plot</span>
 <span class='va'>box_plot</span> <span class='op'>&lt;-</span> <span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>fordistribution</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>week_of_day</span>, y <span class='op'>=</span> <span class='va'>number_of_trips</span>, color <span class='op'>=</span> <span class='va'>week_of_day</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
   <span class='fu'>geom_boxplot</span><span class='op'>(</span>outlier.colour <span class='op'>=</span> <span class='st'>"red"</span>,
         outlier.shape <span class='op'>=</span> <span class='fl'>1</span>,
@@ -1614,7 +1580,7 @@ $ number_of_trips &lt;int&gt; 0, 1, 4, 1, 0, 0, 0, 6, 5, 5, 6, 2, 4, 3, 1,~</cod
 <p>First pass a value and subset the data. In the actual App, the value will be passed via selector on UI. Secondly, plot the histogram using ggplot, use day of the month as the x-axis and fill with user type. Lastly, add a title to the graph.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>#pass a value and subset the data, in the actual App, the value will be passed via selector on UI </span>
+<pre><code><span class='co'>#pass a value and subset the data, in the actual App, the value will be passed via selector on UI </span>
 <span class='va'>utilization</span> <span class='op'>&lt;-</span> <span class='va'>trip_data</span><span class='op'>[</span><span class='va'>trip_data</span><span class='op'>$</span><span class='va'>bikeid</span><span class='op'>==</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4770</span><span class='op'>)</span>, <span class='op'>]</span>
 <span class='va'>utilization</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/subset.html'>subset</a></span><span class='op'>(</span><span class='va'>trip_data</span>, <span class='va'>bikeid</span><span class='op'>==</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4770</span><span class='op'>)</span><span class='op'>)</span>
 
