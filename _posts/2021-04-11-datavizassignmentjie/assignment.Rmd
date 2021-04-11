@@ -32,7 +32,7 @@ Link: https://www.kaggle.com/rgt6899/bluebike-usage-promotion-project
 Install the necessary packages.  
 
 ```{r message = FALSE, warning = FALSE}
-packages = c('data.table','tidyverse','lubridate')
+packages = c('data.table','tidyverse','lubridate', 'plotly')
 for (p in packages){
   if(!require(p, character.only = T)){
   install.packages(p)
@@ -111,17 +111,38 @@ glimpse(fordistribution)
 
 ## Distribution of the bike trips by weekday
 
-This is to analyze the bike trips distribution based on a five number summary and the outliers. We will be using the ggplot to plot the boxplot by having the week of day as x-axis and number of trips as the y-axis, use the week of day as color to differeciate. In addition, add color and shape to outliers to make it more obvious. Lastly, add a title to the boxplot. 
+This is to analyze the bike trips distribution by week of day. Violin plots allow to visualize the distribution of a numeric variable for one or several groups. They are very well adapted for large dataset. We will be using the plotly to plot violin plot by having the week of day as x-axis and number of trips as the y-axis, split by the week of day as color to differentiate. In addition, a boxplot could summarizes the distribution of the number of trips by week of day. As in boxplot it only has the median, thus a mean value is added to show the average. Lastly, add a title, x-axis, y-axis labels to the violin plot. 
 
 ```{r message = FALSE, warning = FALSE}
-#save and plot the box plot
-box_plot <- ggplot(fordistribution, aes(x = week_of_day, y = number_of_trips, color = week_of_day)) + 
-  geom_boxplot(outlier.colour = "red",
-        outlier.shape = 1,
-        outlier.size = 3)
+#plot the violin 
+fig <- fordistribution %>%
+  plot_ly(
+    x = ~week_of_day, 
+    y = ~number_of_trips,
+    split = ~week_of_day,
+    type = 'violin',
+    box = list(
+      visible = T
+    ),
+    meanline = list(
+      visible = T,
+      color = 'darkblue'
+    )
+  ) 
+# add title and label
+fig <- fig %>%
+  layout(
+    title = "Distribution of the bike trips in week of day",
+    xaxis = list(
+      title = "Week of Day"
+    ),
+    yaxis = list(
+      title = "Number of Trips",
+      zeroline = F
+    )
+  )
 
-#add title
-print(box_plot + ggtitle("Distribution of the bike trips in week of day"))
+fig
 ```
 
 ## Anyalyze each bike's utilization 
