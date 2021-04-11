@@ -1,28 +1,13 @@
 ---
 title: "DataVizAssignment"
-description: |
-  A short description of the post.
-author:
-  - name: Ziqi Wang
-    url: https://example.com/norajones
-date: 04-10-2021
-output:
-  distill::distill_article:
-    self_contained: false
+author: "Ziqi Wang"
+date: "3/30/2021"
+output: html_document
 ---
 
-
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 ```
-
-**ISSS608 Visual Analytics and Applications - DataViz Assignment**
-
-Ziqi Wang ([ziqiwang.2020@mitb.smu.edu.sg](mailto:ziqiwang.2020@mitb.smu.edu.sg))
-
-DataViz Project Proposal Link:
-https://priceless-bassi-ea03a8.netlify.app/posts/2021-02-27-visual-analytics-project-proposal-group-9/
-
 
 ## 1.0 Introduction
 This report details the preliminary visualization preparation for a project undertaken for the course ISSS608 - Visual Analytics and Applications offered in SMU MITB. As one of the project deliverables, this assiganment is a sub-module (module 1) from our proposed project - Enabling optimization of Bike Sharing Operations – Bluebikes.
@@ -34,17 +19,32 @@ Based on Shayini, S. (2017, March 24). _RPubs - Bike Sharing Data Analysis with 
 
 ## 3.0 Data Preparation
 ### 3.1 Install Packages
+## 3.0 Data Preparation
+
+### 3.1 Install Packages
+
 Packages required
+
 library(data.table) # for faster loading on large dataset
+
 library(tidyverse) # load ggplot, dplyr
-library(leaflet) # interactive mapping 
+
+library(leaflet) # interactive mapping
+
 library(leaflet.extras) # extra mapping for leaflet
+
 library(lubridate) # formatting date and time
+
 library(gridExtra) # multiple plot arrange
+
 library(grid) # multiple plot arrange
+
 library(psych) # to get describe function
+
 library(janitor) # to get tabulate variables function
+
 library(htmltool) # for HTML generation and output
+
 library(crosstalk) # for filter inputs
 
 ```{r}
@@ -135,8 +135,6 @@ DockStation <- station %>%
 DockStation
 ```
 
-
-
 ### 4.2 Heatmap
 The overall popularity of each dock station.
 
@@ -217,7 +215,6 @@ trip_data %>%
 
 ```
 
-
 ### 4.4 Dot Density  Map with Filter
 To shrink the data size and select the data according to our analyzing purpose, we add filters to the dot density map, with that we are able to visualize the changes in number of trip for each station through the day as well as difference between two types of user.
 
@@ -248,36 +245,14 @@ bscols(widths=c(3,9),
 ```
 
 
-```{r}
-#ending location
-#mapping
-shared_trip<-SharedData$new(trip_data)
-bscols(widths=c(3,9),
-  list(
-    filter_checkbox("usertype", "User Type", shared_trip, ~usertype, columns = 1),
-    filter_slider("hour", "Hour of Day", shared_trip, ~hour, step=1)
-  ),
-  leaflet(shared_trip) %>%
-  setView(lng = -71.0589, lat = 42.3601, zoom = 13) %>% 
-  addTiles() %>%
-  addCircleMarkers(lng = trip_data$end_long, 
-                   lat = trip_data$end_lat,
-                   color = cPal(popularity$n),
-                   stroke = FALSE,
-                   radius = sqrt(popularity$n)/5,
-                   fillOpacity = 1,
-                   popup = paste('Station:',trip_data$end_name, '<br>',
-                           'Number of trips:',popularity$n)) %>%
-  addLegend("bottomright", pal = cPal, values = ~popularity$n,
-      title = "Number of Trip",
-      opacity = 1)
-)
-```
-
-
-
 ## 5.0 Storyboard
 
-![](data/1.png)
+![](1.png)
+
+
+
+
+
+
 
 
